@@ -11,8 +11,9 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-
+/*@Configuration*/
 public class AppConfig {
 
     //@Bean memberService -> new MemoryMemberRepository()
@@ -33,7 +34,8 @@ public class AppConfig {
     @Bean
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService");
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        /*return new OrderServiceImpl(memberRepository(), discountPolicy());*/
+        return null;
     }
 
 
