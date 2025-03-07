@@ -11,17 +11,17 @@ public class BeanLifeCycleTest {
 
     @Test
     public void lifeCycleTest() {
-        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
-        NetworkClient client = ac.getBean(NetworkClient.class);
-        ac.close();
+        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class); // 1.스프링 컨테이너 생성
+        NetworkClient client = ac.getBean(NetworkClient.class); // 5.빈 사용
+        ac.close(); //6.소멸 전 콜백
     }
 
     @Configuration
     static class LifeCycleConfig {
         @Bean
         public NetworkClient networkClient() {
-            NetworkClient networkClient = new NetworkClient();
-            networkClient.setUrl("http://hello-spring.dev");
+            NetworkClient networkClient = new NetworkClient();// 2.스프링 빈 생성
+            networkClient.setUrl("http://hello-spring.dev"); // 3.의존관계 주입
             return networkClient;
 
         }
